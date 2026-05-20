@@ -97,7 +97,8 @@ You are tasked with:
 3. At any given point in a xiangqi game there are roughly 20 possible moves. Your Minimax and Alpha-Beta Pruning algorithms will spend a lot of time on what are clearly poor moves. You are allowed alter these algorithms slightly to not even consider poor quality moves or to only look at the top 7 to 10 moves at a time.
 4. When you are done, answer the questions in the reflection and complete the last two sections.
 
-**All code for this portion should be written yourself.**
+**All code for this portion should be written yourself.** Note that it may be easier to follow the search if you create a visualization for it. Given the workload for that, the visualization is optional and extra credit (see [this section](#extra-credit)).
+
 
 ### Optimization
 Given there is a 1-second response time limit per move, you may find a need to optimize your search beyond what's possible with built-in functions. For this portion, you may use LLMs to optimize your search. **Clearly document and cite where you have included LLM generated code.**
@@ -106,8 +107,12 @@ Given there is a 1-second response time limit per move, you may find a need to o
 
 Ensure that your xiangqibot follows normal PyDoc specs for documentation and readability. 
 
-### Extra Credit (1 point):
-* Create a visualization of the game tree that is being searched. **You can use generative AI for the visualization portion only.**
+### Extra Credit
+(1 point.) Create a visualization of the game tree that is being searched. **You can use generative AI for this portion only.**
+
+Your visualization may look like this: ![Credit: Suoang Lu](example-figure.png)
+
+The steps are: 
 * Alter your xiangqibot so that when called with the command line parameter `draw` (such as `python random_bot.py draw`) it creates a Minimax visualization that starts with the root as a known opening sequence.
 * Perform the Minimax algorithm on the tree, labeling each node backpropogating with the correct minimax value.
 * Have your graph select the top three moves per node and label each edge with the move's notation.
