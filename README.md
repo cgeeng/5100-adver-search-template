@@ -7,36 +7,6 @@ For this assignment you will be making your own xiangqibot taking advantage of t
 
 ---
 
-# First Half - Programming Minimax & AlphaBeta
-
-
-You must complete this section before moving on to the second half of the homework. You can use GenerativeAI to assist you. Perform the following steps.
-
-1. Create the following search tree and visualize it using NetworkX (credit geeksforgeeks). It is recommended that you label the edges to make the choices clear (like `L` and `R`).
-
-![Game Tree](MIN_MAX1.jpg)
-
-2. Add your [NetworkX](https://networkx.org/) rendering here (it does not need to look exactly like the above image):
-
-3. Create a Minimax tree search function that will accept the tree you generated from Step 1 and compute the minimax value of the tree, updating the value of each node as it goes.
-
-4. Render your new version of the search tree to show the choice ultimately decided upon at the root (i.e. color the left or right edge down to the leaf) after running the minimax algorithm.
-
-5. Create an AlphaBeta tree search function that will accept the tree you generated from 1 and compute the minimax value of the tree using alpha-beta pruning, eliminating edges as it goes.
-
-6. Render your new version of the search tree showing the pruned edges from alpha-beta pruning (i.e. if your algorithm decides not to search an edge color it something different). Add your rendering here:
-
-
-If you need an example of what it can look like, see the below reference (without the nodes being labeled as A, B, ...) again originally from geeksforgeeks.
-
-![Alpha Beta Pruning](ALPHA_BETA1.jpg)
-
-
----
-
-# Second Half
-
-
 ## Part 0 - Pre-req
 
 There are some libraries and other software that you will need.
@@ -57,7 +27,7 @@ In order to test/analyze your agent, you'll need to download a Fiary-Stockfish e
 
 The website [https://play.xiangqi.com/analysis/board](https://play.xiangqi.com/analysis/board) can be a useful resource.
 
-### Da Rulez
+## Part 1: Xiangqi Rules
 
 Being a strong Xiangqi is not needed to program a bot that plays it. A great primer can be found here: [https://www.youtube.com/watch?v=kqcwVrE3C5Q](https://www.youtube.com/watch?v=kqcwVrE3C5Q)
 
@@ -112,20 +82,19 @@ You are tasked with:
 
 1. Develop a strong evaluation function for a board state. Take a look at "Programming a Computer for Playing Chess" by Claude Shannon [https://www.computerhistory.org/xiangqi/doc-431614f453dde/](https://www.computerhistory.org/xiangqi/doc-431614f453dde/) published in 1950. You will specifically want to take a look at section 3 in which Shannon describes a straight-forward evaluation function that you can simplify to only evaluate material (pieces) to score a board state.
 
-  * **Note** that your evaluation function will play a crutial role in the strength of your xiangqibot. It is ok to start with a simple function to get going, but you will need to find ways to improve it because your bot will be competing with the bots from the rest of the class and extra points are on the line.
+  * **Note** that your evaluation function will play a crucial role in the strength of your xiangqibot. It is ok to start with a simple function to get going, but you will need to find ways to improve it because your bot will be competing with the bots from the rest of the class and extra points are on the line.
   * Talk the teaching team for helpful tips if you are really stuck.
   
 2. Alter your xiangqibot so that when called with the command line parameter `draw` (such as `python random_bot.py draw`) it creates a Minimax visualization that:
 
 * Starts with the root as a known opening sequence. This is because from the very begining of the game, you do not have that many options and it is difficult to judge how your bot is thinking. You can find a good set of opening moves here [https://www.xiangqi.com/articles/glossary-of-basic-xiangqi-chinese-chess-opening-systems](https://www.xiangqi.com/articles/glossary-of-basic-xiangqi-chinese-chess-opening-systems).
-* Have your graph select the top three moves per node and label each edge with the move's notation.
-* Limit the depth of the generated tree visuals to four (4) half-moves ahead (R-B-R-B). This is because the visuals will be too difficult to read otherwise.
-* Label the leaf nodes with the result of that board state's evaluation.
+
 * Perform the Minimax algorithm on the tree, labeling each node backpropogating with the correct minimax value.
 * Identify the final value of the game tree and the move that your bot will select in a title or subtitle.
-* Perform Alpha-Beta pruning on this game tree to re-color edges and subtrees that have been pruned.
-* Finally, draw on the image (use a tablet or print and mark on it) with the results of alpha and beta for each node -- clearly identifying the why & how your graph pruned these edges that it pruned.
+* Perform Alpha-Beta pruning on this game tree
 * If no branches were pruned, change your opening and/or your evaluation function so that there is some demonstrable pruning.
+
+
 
 3. At any given point in a xiangqi game there are roughly 20 possible moves. Your Minimax and Alpha-Beta Pruning algorithms will spend a lot of time on what are clearly poor moves. You are allowed alter these algorithms slightly to not even consider poor quality moves or to only look at the top 7 to 10 moves at a time.
 4. When you are done, answer the questions in the reflection and complete the last two sections.
@@ -133,6 +102,14 @@ You are tasked with:
 ### Documentation
 
 Ensure that your xiangqibot follows normal PyDoc specs for documentation and readability.
+
+### Extra Credit (1 point):
+* Create a visualization of the game tree that is being searched. **You can use generative AI for the visualization portion only.**
+* * Have your graph select the top three moves per node and label each edge with the move's notation.
+* Limit the depth of the generated tree visuals to four (4) half-moves ahead (R-B-R-B). This is because the visuals will be too difficult to read otherwise.
+* Label the leaf nodes with the result of that board state's evaluation.
+* Alpha-beta pruning should re-color edges and subtrees that have been pruned.
+* Finally, draw on the image (use a tablet or print and mark on it) with the results of alpha and beta for each node -- clearly identifying the why & how your graph pruned these edges that it pruned.
 
 ## Part 2 - Reflection
 
@@ -147,7 +124,7 @@ Update the README to answer the following questions:
 
 ---
 
-### Your Images Here
+### (Extra Credit) Your Images Here
 
 Add the images that you created from the forced opening that you chose so that it demonstrates AlphaBeta Pruning.
 
@@ -156,3 +133,11 @@ Add the images that you created from the forced opening that you chose so that i
 Conciesly and effictively describe the evaluation function that you used for your xiangqibot. You can also use Latex as long as you explain the symbols and justify why you created your function in the manner with which you did.
 
 $$f(X,n) = X_n + X_{n-1}$$
+
+## LLM Policy
+
+You CAN use LLMs to generate code for the visualization extra credit. 
+
+You CAN use LLMs to ask conceptual questions about topics, explain error messages, and refactor your code AFTER it has been written.
+
+You CANNOT use LLMs to generate the code for the rest of your homework assignment.
