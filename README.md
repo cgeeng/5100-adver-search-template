@@ -157,6 +157,6 @@ Conciesly and effictively describe the evaluation function that you used for you
 
 $$f(X,n) = X_n + X_{n-1}$$
 
-### LLM Disclosure
+### Your LLM Disclosure
 
 When disclosing your use of LLMs in this assignment, provide the following: (1) Which AI tool you used and for what specific purpose, (2) The actual prompts you entered (if any). Including your prompts demonstrates transparency and helps others understand your approach, (3) What you kept, modified, or rejected from the AI's responses, and (4) How the AI assistance influenced your final work. Be specific and honest in your disclosure. Note, if using copilot or other LLM for autocomplete, you don't have to disclose all auto complete, but you should disclose how it was evaluated in addition to what extent it was used.
