@@ -27,7 +27,7 @@ In order to test/analyze your agent, you'll need to download a Fiary-Stockfish e
 
 The website [https://play.xiangqi.com/analysis/board](https://play.xiangqi.com/analysis/board) can be a useful resource.
 
-## Part 1: Xiangqi Rules
+### Xiangqi Rules
 
 Being a strong Xiangqi is not needed to program a bot that plays it. A great primer can be found here: [https://www.youtube.com/watch?v=kqcwVrE3C5Q](https://www.youtube.com/watch?v=kqcwVrE3C5Q)
 
@@ -83,33 +83,56 @@ You are tasked with:
 1. Develop a strong evaluation function for a board state. Take a look at "Programming a Computer for Playing Chess" by Claude Shannon [https://www.computerhistory.org/xiangqi/doc-431614f453dde/](https://www.computerhistory.org/xiangqi/doc-431614f453dde/) published in 1950. You will specifically want to take a look at section 3 in which Shannon describes a straight-forward evaluation function that you can simplify to only evaluate material (pieces) to score a board state.
 
   * **Note** that your evaluation function will play a crucial role in the strength of your xiangqibot. It is ok to start with a simple function to get going, but you will need to find ways to improve it because your bot will be competing with the bots from the rest of the class and extra points are on the line.
-  * Talk the teaching team for helpful tips if you are really stuck.
+  * Talk to the teaching team for helpful tips if you are really stuck.
   
-2. Alter your xiangqibot so that when called with the command line parameter `draw` (such as `python random_bot.py draw`) it creates a Minimax visualization that:
+2. Alter your xiangqibot so that when you run the program, it creates a Minimax game tree that:
 
 * Starts with the root as a known opening sequence. This is because from the very begining of the game, you do not have that many options and it is difficult to judge how your bot is thinking. You can find a good set of opening moves here [https://www.xiangqi.com/articles/glossary-of-basic-xiangqi-chinese-chess-opening-systems](https://www.xiangqi.com/articles/glossary-of-basic-xiangqi-chinese-chess-opening-systems).
 
-* Perform the Minimax algorithm on the tree, labeling each node backpropogating with the correct minimax value.
+* Perform the Minimax algorithm on the tree, backpropogating each node with the correct minimax value.
 * Identify the final value of the game tree and the move that your bot will select in a title or subtitle.
 * Perform Alpha-Beta pruning on this game tree
-* If no branches were pruned, change your opening and/or your evaluation function so that there is some demonstrable pruning.
-
-
+* If no branches were pruned, change your opening and/or your evaluation function so that there is some demonstrable pruning (if you don't do the visualization extra credit, you will likely need some message to the console to indicate pruning has occured).
 
 3. At any given point in a xiangqi game there are roughly 20 possible moves. Your Minimax and Alpha-Beta Pruning algorithms will spend a lot of time on what are clearly poor moves. You are allowed alter these algorithms slightly to not even consider poor quality moves or to only look at the top 7 to 10 moves at a time.
 4. When you are done, answer the questions in the reflection and complete the last two sections.
 
+**All code for this portion should be written yourself.**
+
+### Optimization
+Given there is a 1-second response time limit per move, you may find a need to optimize your search beyond what's possible with built-in functions. For this portion, you may use LLMs to optimize your search. **Clearly document and cite where you have included LLM generated code.**
+
 ### Documentation
 
-Ensure that your xiangqibot follows normal PyDoc specs for documentation and readability.
+Ensure that your xiangqibot follows normal PyDoc specs for documentation and readability. 
 
 ### Extra Credit (1 point):
 * Create a visualization of the game tree that is being searched. **You can use generative AI for the visualization portion only.**
-* * Have your graph select the top three moves per node and label each edge with the move's notation.
+* Alter your xiangqibot so that when called with the command line parameter `draw` (such as `python random_bot.py draw`) it creates a Minimax visualization that starts with the root as a known opening sequence.
+* Perform the Minimax algorithm on the tree, labeling each node backpropogating with the correct minimax value.
+* Have your graph select the top three moves per node and label each edge with the move's notation.
 * Limit the depth of the generated tree visuals to four (4) half-moves ahead (R-B-R-B). This is because the visuals will be too difficult to read otherwise.
 * Label the leaf nodes with the result of that board state's evaluation.
 * Alpha-beta pruning should re-color edges and subtrees that have been pruned.
 * Finally, draw on the image (use a tablet or print and mark on it) with the results of alpha and beta for each node -- clearly identifying the why & how your graph pruned these edges that it pruned.
+
+**Clearly document and cite where you have included LLM generated code.**
+
+## LLM Policy
+
+You CAN use LLMs to generate code for the visualization extra credit. 
+
+You CAN use LLMs to ask conceptual questions about topics, explain error messages, and refactor your code AFTER it has been written.
+
+You CAN use LLMs to generate search optimization after you have written your initial alpha-beta pruning program.
+
+You CANNOT use LLMs to generate the code for the rest of your homework assignment.
+
+Clearly document your usage in your code and in the Readme.md in the section below.
+Include in your submission:
+
+* What you used AI for (e.g., "refactoring nested conditionals," "generating unit tests," "learning Strategy pattern")
+* Example prompts showing how you used AI
 
 ## Part 2 - Reflection
 
@@ -134,10 +157,6 @@ Conciesly and effictively describe the evaluation function that you used for you
 
 $$f(X,n) = X_n + X_{n-1}$$
 
-## LLM Policy
+### LLM Disclosure
 
-You CAN use LLMs to generate code for the visualization extra credit. 
-
-You CAN use LLMs to ask conceptual questions about topics, explain error messages, and refactor your code AFTER it has been written.
-
-You CANNOT use LLMs to generate the code for the rest of your homework assignment.
+When disclosing your use of LLMs in this assignment, provide the following: (1) Which AI tool you used and for what specific purpose, (2) The actual prompts you entered (if any). Including your prompts demonstrates transparency and helps others understand your approach, (3) What you kept, modified, or rejected from the AI's responses, and (4) How the AI assistance influenced your final work. Be specific and honest in your disclosure. Note, if using copilot or other LLM for autocomplete, you don't have to disclose all auto complete, but you should disclose how it was evaluated in addition to what extent it was used.
